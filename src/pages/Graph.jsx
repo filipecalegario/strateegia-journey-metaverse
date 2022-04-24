@@ -1,6 +1,6 @@
 import { gatherGraphData } from "../data/graphData";
 import { useEffect, useState, useRef } from "react";
-import ForceGraph3D from 'react-force-graph-3d';
+import ForceGraph3D from "react-force-graph-3d";
 import { gatherMockupGraphData } from "../data/mockupGraphData";
 import { Box, Input, Select, Stack, Spinner, Flex } from "@chakra-ui/react";
 import * as api from "strateegia-api";
@@ -96,7 +96,8 @@ export default function Graph() {
           nodeId="id"
           nodeOpacity={1}
           nodeResolution={10}
-
+          d3AlphaDecay={0.005}
+          forceEngine="d3"
           // dagMode={'radialout'}
           // onEngineStop={() => graphRef.current.zoomToFit(400)}
         />
