@@ -2,7 +2,15 @@ import { gatherGraphData } from "../data/graphData";
 import { useEffect, useState, useRef } from "react";
 import ForceGraph3D from "react-force-graph-3d";
 import { gatherMockupGraphData } from "../data/mockupGraphData";
-import { Box, Input, Select, Stack, Spinner, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Select,
+  Stack,
+  Spinner,
+  Flex,
+  Heading,
+} from "@chakra-ui/react";
 import * as api from "strateegia-api";
 
 export default function Graph() {
@@ -65,6 +73,9 @@ export default function Graph() {
     //   <pre>{JSON.stringify(graphData, null, 2)}</pre>
     // </div>
     <Box>
+      <Heading as="h3" size="md" p={3}>
+        metaverso da jornada
+      </Heading>
       <Select placeholder="escolha o projeto" onChange={handleSelectChange}>
         {projectList.map((lab) => {
           return lab.projects.map((project) => {
