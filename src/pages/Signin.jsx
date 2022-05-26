@@ -10,7 +10,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { auth } from "strateegia-api";
+import { auth, getUser } from "strateegia-api";
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -26,9 +26,14 @@ export default function Signin() {
     try {
       const accessToken = await auth(email, password);
       if (accessToken) {
-        console.log(accessToken);
+        const user = await getUser(accessToken);
         localStorage.setItem("accessToken", accessToken);
         navigate("/graph");
+        // if (user.plan.type !== 'BASIC') {
+        // } else {
+        //   throw new Error(`You've the ${user.plan.type} plan, select the PRO or BUSINESS plan to access this app`);
+        // }
+        console.log(user)
       } else {
         throw new Error("Invalid credentials");
       }
